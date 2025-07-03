@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CPUX-F Quiz</title>
-    <!-- Das Favicon wird jetzt aus dem 'assets'-Ordner geladen -->
+    <!-- Favicon wird aus dem 'assets'-Ordner geladen -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <!-- Tailwind CSS CDN für schnelles Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -491,8 +491,7 @@
         <div class="modal-content">
             <h3 id="explanation-title">Erklärung</h3>
             <div id="explanation-content">
-                <div class="loading-spinner"></div>
-                <p>Erklärung wird geladen...</p>
+                <!-- Erklärungstext wird hier geladen -->
             </div>
             <div class="modal-buttons">
                 <button class="modal-button primary" id="close-explanation">Schließen</button>
@@ -513,8 +512,8 @@
         </div>
     </div>
 
-    <script>
-        // Original quiz questions
+    <script type="module">
+        // Original quiz questions with explanations from the PDF
         const originalQuestions = [
             {
                 question: "Welcher eine der folgenden Aspekte ist Bestandteil der menschzentrierten Gestaltung?",
@@ -528,7 +527,8 @@
                 ],
                 correct: ["D"],
                 multiChoice: false,
-                correctTexts: ["D. Die Einbeziehung der Benutzer während des gesamten Gestaltungsprozesses"]
+                correctTexts: ["D. Die Einbeziehung der Benutzer während des gesamten Gestaltungsprozesses"],
+                explanation: "Antwort D ist die Definition von „Einbeziehung der Benutzer“ im Curriculum."
             },
             {
                 question: "Die folgende Abbildung zeigt den Zusammenhang zwischen den Aktivitäten der menschzentrierten Gestaltung. Welche zwei Fehler sind in der Abbildung enthalten?",
@@ -545,7 +545,9 @@
                 correctTexts: [
                     "E. Es fehlt einer der grau schraffierten Pfeile, der eine Iteration kennzeichnen.",
                     "F. Die Aktivität „Evaluieren der Gestaltungslösung gegen organisatorische Anforderungen\" sollte „Evaluieren der Gestaltungslösung gegen Nutzungsanforderungen\" lauten."
-                ]
+                ],
+                imageSrc: "https://placehold.co/600x400/E0E7FF/4338CA?text=Abbildung+1+Menschzentrierte+Gestaltung",
+                explanation: "Antwort E ist falsch, weil der Pfeil für Iteration fehlt. Antwort F ist falsch, weil die Evaluierung immer gegen die Nutzungsanforderungen erfolgt, nicht gegen organisatorische Anforderungen."
             },
             {
                 question: "Welche zwei der folgenden HCD-Ergebnisse werden während der Aktivität „Verstehen und Festlegen des Nutzungskontextes\" erzeugt?",
@@ -559,7 +561,8 @@
                 ],
                 correct: ["C", "D"],
                 multiChoice: true,
-                correctTexts: ["C. Personas", "D. Ist-Szenarien"]
+                correctTexts: ["C. Personas", "D. Ist-Szenarien"],
+                explanation: "Antwort C ist richtig, weil Personas ein Ergebnis der Aktivität „Verstehen und Festlegen des Nutzungskontextes“ sind. Antwort D ist richtig, weil Ist-Szenarien ein Ergebnis der Aktivität „Verstehen und Festlegen des Nutzungskontextes“ sind."
             },
             {
                 question: "Eine Hotelbuchungs-Website bietet den Benutzern keine Möglichkeit, eine Reservierung zu stornieren. Eine Analyse des Nutzungskontextes zeigt aber, dass Benutzer diese Funktion benötigen. Welcher eine Aspekt der Usability wird von dieser Website verletzt?",
@@ -573,7 +576,8 @@
                 ],
                 correct: ["D"],
                 multiChoice: false,
-                correctTexts: ["D. Effektivität"]
+                correctTexts: ["D. Effektivität"],
+                explanation: "Antwort D ist die Definition von „Effektivität“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Antwortmöglichkeiten nennen ein gültiges Beispiel für die Vermeidung von Schäden durch die Benutzung?",
@@ -590,7 +594,8 @@
                 correctTexts: [
                     "C. Im Ausland erhalten die Benutzer eine Nachricht auf ihrem Mobiltelefon, die sie über Datenroaming-Gebühren informiert.",
                     "F. Putzmittelflaschen haben einen Verschluss, den Kinder nicht öffnen können."
-                ]
+                ],
+                explanation: "Antwort C ist richtig, weil es sich um eine Warnung handelt, die den Benutzer vor Schaden bewahrt. Antwort F ist richtig, weil es sich um eine physische Schutzvorrichtung handelt, die den Benutzer vor Schaden bewahrt."
             },
             {
                 question: "Hinsichtlich der Website einer Fluggesellschaft, welche zwei der folgenden Aspekte beeinflussen die User Experience, nicht aber die Usability?",
@@ -607,7 +612,8 @@
                 correctTexts: [
                     "D. Die Benutzer empfinden die Preise auf der Website als ziemlich hoch.",
                     "F. Nach dem Flug ärgern sich die Benutzer über unerwünschte Marketing-E-Mails der Fluggesellschaft."
-                ]
+                ],
+                explanation: "Antwort D ist richtig, weil die Preise auf der Website die User Experience beeinflussen, aber keine Usability sind. Antwort F ist richtig, weil unerwünschte E-Mails die User Experience beeinflussen, aber keine Usability sind."
             },
             {
                 question: "Welche zwei der folgenden Komponenten sind für den Autofahrer Teil der Benutzungsschnittstelle eines Autos?",
@@ -621,7 +627,8 @@
                 ],
                 correct: ["A", "D"],
                 multiChoice: true,
-                correctTexts: ["A. Lenkrad", "D. Türgriff"]
+                correctTexts: ["A. Lenkrad", "D. Türgriff"],
+                explanation: "Antwort A ist richtig, weil das Lenkrad eine Komponente der Benutzungsschnittstelle ist. Antwort D ist richtig, weil der Türgriff eine Komponente der Benutzungsschnittstelle ist."
             },
             {
                 question: "Welche eine der folgenden Aussagen ist KEIN menschzentriertes Qualitätsziel für einen Geldautomaten der nächsten Generation?",
@@ -635,7 +642,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Die Benutzer müssen in der Lage sein, den Namen des Geldautomatenherstellers doppelt so schnell zu erkennen wie bisher."]
+                correctTexts: ["C. Die Benutzer müssen in der Lage sein, den Namen des Geldautomatenherstellers doppelt so schnell zu erkennen wie bisher."],
+                explanation: "Antwort C ist falsch, weil die Erkennung des Herstellernamens kein menschzentriertes Qualitätsziel ist. Es ist kein Ziel, das sich auf die Benutzung des Systems bezieht."
             },
             {
                 question: "Welche eine der folgenden Methoden ist NICHT geeignet, um den Nutzungskontext eines Geldautomaten zu bestimmen?",
@@ -649,7 +657,8 @@
                 ],
                 correct: ["A"],
                 multiChoice: false,
-                correctTexts: ["A. Die Idee für den neuen Geldautomaten repräsentativen Bankkunden zeigen"]
+                correctTexts: ["A. Die Idee für den neuen Geldautomaten repräsentativen Bankkunden zeigen"],
+                explanation: "Antwort A ist falsch, weil das Zeigen von Ideen an Kunden kein Mittel zur Bestimmung des Nutzungskontextes ist. Es ist eine Methode zur Validierung von Ideen."
             },
             {
                 question: "Thomas arbeitet in einer Bank. Eine seiner Aufgaben ist es, die Bargeldmenge im Geldautomaten zu kontrollieren und gegebenenfalls bis zum erforderlichen Stand aufzufüllen. Das macht er jeden Morgen und freitagnachmittags in Vorbereitung auf das Wochenende. Welche eine der folgenden Aussagen beschreibt Thomas am besten?",
@@ -663,7 +672,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Thomas ist sekundärer Benutzer des Geldautomaten."]
+                correctTexts: ["C. Thomas ist sekundärer Benutzer des Geldautomaten."],
+                explanation: "Antwort C ist die Definition von „sekundärer Benutzer“ im Curriculum."
             },
             {
                 question: "HappyHolidays verkauft über seine Website Pauschalreisen. Anna bucht auf HappyHolidays.com eine Reise nach Kreta für Bernd und sich; sie schickt die Bordkarten per E-Mail an Bernd, damit er sie ausdruckt. Carolin hat Schwierigkeiten damit, einen Urlaub in Frankreich auf HappyHolidays.com zu buchen, also ruft sie bei HappyHolidays an und spricht mit David; David führt sie am Telefon durch den gesamten Buchungsprozess. Welche zwei der folgenden Aussagen sind richtig?",
@@ -680,7 +690,8 @@
                 correctTexts: [
                     "D. David ist ein sekundärer Benutzer von HappyHolidays.com.",
                     "F. Bernd ist ein indirekter Benutzer von HappyHolidays.com."
-                ]
+                ],
+                explanation: "Antwort D ist richtig, weil David ein sekundärer Benutzer ist, der das System im Auftrag eines primären Benutzers (Carolin) benutzt. Antwort F ist richtig, weil Bernd ein indirekter Benutzer ist, der das Ergebnis der Systemnutzung erhält, aber nicht direkt mit dem System interagiert."
             },
             {
                 question: "Welche zwei der folgenden Personen sind Interessenvertreter, aber KEINE Benutzer einer Autovermietungs-Website?",
@@ -697,7 +708,8 @@
                 correctTexts: [
                     "C. Ein Designer, der die Benutzungsschnittstelle der Autovermietungs-Website gestaltet",
                     "F. Ein Mitarbeiter im Marketing, der über die Autovermietungs-Website eine Werbeaktion mit „10 % Rabatt auf die Kfz-Versicherung” laufen lässt, die für alle Benutzer gilt, die direkt über die Website ein Auto reservieren"
-                ]
+                ],
+                explanation: "Antwort C ist richtig, weil Designer Interessenvertreter sind, aber keine Benutzer. Antwort F ist richtig, weil Marketingmitarbeiter Interessenvertreter sind, aber keine Benutzer."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt eine Benutzergruppe am besten?",
@@ -711,7 +723,8 @@
                 ],
                 correct: ["A"],
                 multiChoice: false,
-                correctTexts: ["A. Eine Gruppe von Benutzern mit denselben oder ähnlichen Personenmerkmalen und Nutzungskontexten in Bezug auf das interaktive System"]
+                correctTexts: ["A. Eine Gruppe von Benutzern mit denselben oder ähnlichen Personenmerkmalen und Nutzungskontexten in Bezug auf das interaktive System"],
+                explanation: "Antwort A ist die Definition von „Benutzergruppe“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Aussagen beschreiben am besten, warum es wichtig ist, zwischen Aufgaben und Teilaufgaben zu unterscheiden?",
@@ -728,7 +741,8 @@
                 correctTexts: [
                     "C. Aufgaben können zur Erstellung von Usability-Testaufgaben verwendet werden; Teilaufgaben sollten als Grundlage für Usability-Testaufgaben vermieden werden, da sie für sich genommen keinen Wert besitzen.",
                     "F. Beim Festlegen einer Interaktion, die eine Aufgabe unterstützt, müssen alle Teilaufgaben, die für die Erledigung dieser Aufgabe wichtig sind, berücksichtigt werden."
-                ]
+                ],
+                explanation: "Antwort C ist richtig, weil Aufgaben für Usability-Testaufgaben verwendet werden können, während Teilaufgaben für sich genommen keinen Wert besitzen. Antwort F ist richtig, weil alle Teilaufgaben, die für die Erledigung einer Aufgabe wichtig sind, berücksichtigt werden müssen."
             },
             {
                 question: "Welche zwei der folgenden Fragen sind am besten geeignet, wenn eine Benutzerbefragung verwendet wird, um den Nutzungskontext einer Hotelbuchungs-Website zu verstehen?",
@@ -745,7 +759,8 @@
                 correctTexts: [
                     "A. Was erwarten Sie von einer Hotelbuchungs-Website?",
                     "D. Aus welchem Grund haben Sie zuletzt eine Hotelbuchungs-Website genutzt?"
-                ]
+                ],
+                explanation: "Antwort A ist richtig, weil es eine offene Frage ist, die sich auf Erwartungen bezieht. Antwort D ist richtig, weil es eine offene Frage ist, die sich auf den Nutzungsgrund bezieht."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt den Zweck einer Fokusgruppe am besten?",
@@ -759,7 +774,8 @@
                 ],
                 correct: ["E"],
                 multiChoice: false,
-                correctTexts: ["E. Ein tieferes Verständnis ausgewählter Themen und wichtiger Fragen des Nutzungskontexts aus verschiedenen Blickwinkeln zu gewinnen"]
+                correctTexts: ["E. Ein tieferes Verständnis ausgewählter Themen und wichtiger Fragen des Nutzungskontexts aus verschiedenen Blickwinkeln zu gewinnen"],
+                explanation: "Antwort E ist die Definition von „Fokusgruppe“ im Curriculum."
             },
             {
                 question: "Ein Kollege plant Interviews mit den Benutzern eines Restaurantbewertungssystems. Seine Interview-Checkliste enthält unter anderem die Frage: Wie wählen Sie ein Restaurant aus? Welche zwei der folgenden Begriffe charakterisieren diese Interviewfrage am besten?",
@@ -773,7 +789,8 @@
                 ],
                 correct: ["D", "E"],
                 multiChoice: true,
-                correctTexts: ["D. Neutral", "E. Offen"]
+                correctTexts: ["D. Neutral", "E. Offen"],
+                explanation: "Antwort D ist richtig, weil die Frage neutral ist und keine bestimmte Antwort suggeriert. Antwort E ist richtig, weil es eine offene Frage ist, die eine ausführliche Antwort erfordert."
             },
             {
                 question: "Welche zwei der folgenden Aussagen sind gültige Ist-Szenarien für eine bestehende Autovermietungs-Website?",
@@ -790,7 +807,8 @@
                 correctTexts: [
                     "A. Rita besucht die Autovermietungswebsite, um einen Kleinwagen zu mieten. Sie vergleicht die Autos, die an ihren Reisedaten verfügbar sind und wählt das Auto aus, das ihr am besten gefällt. Sie reserviert das Auto für die Abholung am Tag vor ihrer Reise.",
                     "B. Rita besucht die Autovermietungswebsite, um einen Kleinwagen zu mieten. Ihr ist nicht klar, ob die Autos, die ihr gefallen, an ihren Reisedaten verfügbar sind. Rita sucht nach einer Telefonnummer, um mit jemandem von der Autovermietung zu sprechen, aber sie kann nur einen Chat-Dienst finden, der momentan offline ist."
-                ]
+                ],
+                explanation: "Antwort A ist richtig, weil es ein Ist-Szenario ist, das den aktuellen Zustand der Systemnutzung beschreibt. Antwort B ist richtig, weil es ein Ist-Szenario ist, das ein Problem bei der aktuellen Systemnutzung beschreibt."
             },
             {
                 question: "Welcher eine Ausdruck charakterisiert die folgende Beschreibung am besten? Elena Herrmann, Personalkoordinatorin, Fluid Pharmaceuticals. Elena ist 35 Jahre alt. Sie teilt sich eine Wohnung mit ihrem Freund, mit dem sie seit vier Jahren zusammen ist. Die beiden haben keine Kinder. Elenas Lieblingsbeschäftigungen sind Tangotanzen und das Zubereiten köstlicher Tapas. Sie hat solide Grundkenntnisse in Spanisch. Elena verbringt den größten Teil ihres Tages damit, Formulare zu bearbeiten, die benötigt werden, um Mitarbeiter in der Marketingabteilung einzustellen, zu versetzen oder zu entlassen. Wenn etwas unvollständig oder unklar ist, nimmt sie sich die nötige Zeit, die Antwort zu finden. Sie ist Expertin für alle relevanten Formulare und Verfahren. Elenas Ziele: Karriere im Personalwesen, Exzellenz durch Genauigkeit, Hilfsbereitschaft, nicht in Rückstand geraten.",
@@ -804,7 +822,8 @@
                 ],
                 correct: ["B"],
                 multiChoice: false,
-                correctTexts: ["B. Persona"]
+                correctTexts: ["B. Persona"],
+                explanation: "Antwort B ist die Definition von „Persona“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Aussagen über Erfordernisse sind richtig?",
@@ -821,7 +840,8 @@
                 correctTexts: [
                     "A. Erfordernisse werden immer aus Sicht des Benutzers formuliert.",
                     "B. Die Erfordernisse für eine Benutzergruppe können sich von den Erfordernissen für eine andere Benutzergruppe im gleichen Nutzungskontext unterscheiden."
-                ]
+                ],
+                explanation: "Antwort A ist richtig, weil Erfordernisse immer aus Sicht des Benutzers formuliert werden. Antwort B ist richtig, weil sich die Erfordernisse für verschiedene Benutzergruppen unterscheiden können."
             },
             {
                 question: "Welcher eine der untenstehenden Begriffe beschreibt die folgende Aussage am besten? 80% der Benutzer, die die Autovermietungs-Website schon mindestens zweimal genutzt haben, müssen in der Lage sein, am Flughafen Frankfurt ein Auto für zwei Tage ab morgen 09.00 Uhr zu mieten. Benutzer müssen die Aufgabe in weniger als 5 Minuten erledigen können.",
@@ -835,7 +855,8 @@
                 ],
                 correct: ["E"],
                 multiChoice: false,
-                correctTexts: ["E. Quantitative Nutzungsanforderung"]
+                correctTexts: ["E. Quantitative Nutzungsanforderung"],
+                explanation: "Antwort E ist die Definition von „quantitative Nutzungsanforderung“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Aussagen sind gültige Nutzungsanforderungen für eine Hotelbuchungs-Website?",
@@ -852,7 +873,8 @@
                 correctTexts: [
                     "A. Mindestens 80% der Benutzer, die die Website zum ersten Mal nutzen, müssen in der Lage sein, innerhalb von zehn Minuten ein Zimmer zu buchen.",
                     "F. Benutzer müssen in der Lage sein, eine Zimmerbuchung zu stornieren."
-                ]
+                ],
+                explanation: "Antwort A ist richtig, weil es eine quantitative Nutzungsanforderung ist. Antwort F ist richtig, weil es eine qualitative Nutzungsanforderung ist."
             },
             {
                 question: "Welche zwei der folgenden Aspekte sind Teil der Informationsarchitektur?",
@@ -869,7 +891,8 @@
                 correctTexts: [
                     "D. Die Ausdrücke, die in der Benutzungsschnittstelle für Navigation und Inhalt verwendet werden",
                     "F. Die Struktur der Informationen, die dem Benutzer zur Verfügung stehen müssen"
-                ]
+                ],
+                explanation: "Antwort D ist richtig, weil Ausdrücke in der Benutzungsschnittstelle Teil der Informationsarchitektur sind. Antwort F ist richtig, weil die Struktur der Informationen Teil der Informationsarchitektur ist."
             },
             {
                 question: "Welche eine der folgenden Methoden ist am nützlichsten für die Entwicklung der Navigationsstruktur einer neuen Website?",
@@ -883,7 +906,8 @@
                 ],
                 correct: ["E"],
                 multiChoice: false,
-                correctTexts: ["E. Card-Sorting"]
+                correctTexts: ["E. Card-Sorting"],
+                explanation: "Antwort E ist die Definition von „Card-Sorting“ im Curriculum."
             },
             {
                 question: "Welcher eine der folgenden Begriffe beschreibt die untenstehende Abbildung am besten?",
@@ -897,7 +921,9 @@
                 ],
                 correct: ["F"],
                 multiChoice: false,
-                correctTexts: ["F. Wireframe"]
+                correctTexts: ["F. Wireframe"],
+                imageSrc: "https://placehold.co/600x400/E0E7FF/4338CA?text=Wireframe+Beispiel",
+                explanation: "Antwort F ist die Definition von „Wireframe“ im Curriculum."
             },
             {
                 question: "Für eine interne Demonstration hat einer Ihrer Kollegen ein neues Bestellsystem auf einigen Blättern Papier skizziert. Jedes Blatt stellt einen Screen dar. Der Inhalt der Screens ist handgezeichnet und unvollständig. Ihr Kollege wechselt die Screens, sobald man auf den Button „klickt“, indem man mit einem Bleistift das Blatt berührt. Welcher eine der folgenden Begriffe beschreibt diese Sammlung von Skizzen am besten?",
@@ -911,7 +937,8 @@
                 ],
                 correct: ["B"],
                 multiChoice: false,
-                correctTexts: ["B. Low-Fidelity-Prototyp"]
+                correctTexts: ["B. Low-Fidelity-Prototyp"],
+                explanation: "Antwort B ist die Definition von „Low-Fidelity-Prototyp“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Begriffe sind Interaktionsprinzipien?",
@@ -925,7 +952,8 @@
                 ],
                 correct: ["A", "D"],
                 multiChoice: true,
-                correctTexts: ["A. Erwartungskonformität", "D. Aufgabenangemessenheit"]
+                correctTexts: ["A. Erwartungskonformität", "D. Aufgabenangemessenheit"],
+                explanation: "Antwort A ist richtig, weil Erwartungskonformität ein Interaktionsprinzip ist. Antwort D ist richtig, weil Aufgabenangemessenheit ein Interaktionsprinzip ist."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt den Begriff „mentales Modell“ am besten?",
@@ -939,7 +967,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Der Denkprozess einer Person darüber, wie etwas in der realen Welt funktioniert"]
+                correctTexts: ["C. Der Denkprozess einer Person darüber, wie etwas in der realen Welt funktioniert"],
+                explanation: "Antwort C ist die Definition von „mentales Modell“ im Curriculum."
             },
             {
                 question: "Welche eine der folgenden Aussagen verdeutlicht die Wichtigkeit von Gestaltungsregeln?",
@@ -953,7 +982,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Der spezifische Charakter von Gestaltungsregeln ermöglicht es Designern, die gleichen User Interface Elemente konsistent zu implementieren."]
+                correctTexts: ["C. Der spezifische Charakter von Gestaltungsregeln ermöglicht es Designern, die gleichen User Interface Elemente konsistent zu implementieren."],
+                explanation: "Antwort C ist richtig, weil Gestaltungsregeln die konsistente Implementierung von User Interface Elementen sichern."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt den Begriff „Design Pattern” am besten?",
@@ -967,7 +997,8 @@
                 ],
                 correct: ["F"],
                 multiChoice: false,
-                correctTexts: ["F. Eine Lösung eines häufig auftretendes Gestaltungsproblem in einem gegebenen Nutzungskontext, die ein Gestaltungsproblem, eine allgemeine Lösung und Beispiele für die Anwendung dieser beschreibt"]
+                correctTexts: ["F. Eine Lösung eines häufig auftretendes Gestaltungsproblem in einem gegebenen Nutzungskontext, die ein Gestaltungsproblem, eine allgemeine Lösung und Beispiele für die Anwendung dieser beschreibt"],
+                explanation: "Antwort F ist die Definition von „Design Pattern“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Methoden werden häufig zur Usability-Evaluierung eingesetzt?",
@@ -981,7 +1012,8 @@
                 ],
                 correct: ["B", "F"],
                 multiChoice: true,
-                correctTexts: ["B. Unmoderierter Usability-Test", "F. Usability-Inspektion"]
+                correctTexts: ["B. Unmoderierter Usability-Test", "F. Usability-Inspektion"],
+                explanation: "Antwort B ist richtig, weil unmoderierte Usability-Tests zur Usability-Evaluierung eingesetzt werden. Antwort F ist richtig, weil Usability-Inspektionen zur Usability-Evaluierung eingesetzt werden."
             },
             {
                 question: "Ihr Team ist bereit, eine neue Autovermietungs-Website online zu stellen. Aufgrund zeitlicher Engpässe konnten während der Entwicklung der Website keine Usability-Tests durchgeführt werden. Ihr Vorgesetzter fordert Sie nun auf, einen Usability-Test durchzuführen. Ihre Teammitglieder stehen Usability skeptisch gegenüber. Angenommen, Sie haben keine großen Einschränkungen hinsichtlich des Budgets, welche eine der folgenden Maßnahmen wäre für das Projekt am besten?",
@@ -995,7 +1027,8 @@
                 ],
                 correct: ["B"],
                 multiChoice: false,
-                correctTexts: ["B. Führen Sie einen Usability-Test mit 5 repräsentativen Benutzern durch. Beheben Sie die gefundenen Usability-Probleme, bevor Sie einen weiteren Usability-Test mit 5 anderen repräsentativen Benutzern durchführen. Laden Sie Ihre Teammitglieder zur Beobachtung der Testsitzungen ein."]
+                correctTexts: ["B. Führen Sie einen Usability-Test mit 5 repräsentativen Benutzern durch. Beheben Sie die gefundenen Usability-Probleme, bevor Sie einen weiteren Usability-Test mit 5 anderen repräsentativen Benutzern durchführen. Laden Sie Ihre Teammitglieder zur Beobachtung der Testsitzungen ein."],
+                explanation: "Antwort B ist die beste Maßnahme, da iterative Usability-Tests mit kleinen Benutzergruppen am effektivsten sind, um Usability-Probleme zu finden und zu beheben, und die Einbeziehung von Teammitgliedern ihre Skepsis reduziert."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt einen Usability-Test am besten?",
@@ -1009,7 +1042,8 @@
                 ],
                 correct: ["E"],
                 multiChoice: false,
-                correctTexts: ["E. Repräsentative Benutzer werden beobachtet, während sie vorgegebene, repräsentative Aufgaben mit Hilfe des interaktiven Systems lösen."]
+                correctTexts: ["E. Repräsentative Benutzer werden beobachtet, während sie vorgegebene, repräsentative Aufgaben mit Hilfe des interaktiven Systems lösen."],
+                explanation: "Antwort E ist die Definition von „Usability-Test“ im Curriculum."
             },
             {
                 question: "Welche zwei der folgenden Aktivitäten gehören zur Vorbereitung oder Planung eines Usability-Tests?",
@@ -1026,7 +1060,8 @@
                 correctTexts: [
                     "B. Erstellen des Usability-Test-Leitfadens",
                     "D. Rekrutierung geeigneter Usability-Testteilnehmer"
-                ]
+                ],
+                explanation: "Antwort B ist richtig, weil das Erstellen des Usability-Test-Leitfadens zur Planung gehört. Antwort D ist richtig, weil die Rekrutierung von Teilnehmern zur Planung gehört."
             },
             {
                 question: "Sie wurden gebeten, einen Usability-Test einer Autovermietungs-Website durchzuführen. Welche eine der folgenden Aufgaben ist für den Usability-Test NICHT geeignet?",
@@ -1040,7 +1075,8 @@
                 ],
                 correct: ["B"],
                 multiChoice: false,
-                correctTexts: ["B. Sagen Sie mir, was Sie von der Startseite der Website halten."]
+                correctTexts: ["B. Sagen Sie mir, was Sie von der Startseite der Website halten."],
+                explanation: "Antwort B ist falsch, weil es sich um eine Meinungsfrage handelt, die nicht für einen Usability-Test geeignet ist, da sie keine konkrete Aufgabe beinhaltet."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt den Begriff „Post-Test-Interview” am besten?",
@@ -1054,7 +1090,8 @@
                 ],
                 correct: ["D"],
                 multiChoice: false,
-                correctTexts: ["D. Das Interview, das stattfindet, nachdem der Usability-Testteilnehmer so viele Usability-Testaufgaben durchgeführt hat, wie es die Zeit erlaubt"]
+                correctTexts: ["D. Das Interview, das stattfindet, nachdem der Usability-Testteilnehmer so viele Usability-Testaufgaben durchgeführt hat, wie es die Zeit erlaubt"],
+                explanation: "Antwort D ist die Definition von „Post-Test-Interview“ im Curriculum."
             },
             {
                 question: "Sie führen einen Usability-Test einer neuen Autovermietungs-Website durch. Welcher eine der folgenden Befunde ist NICHT passend für diesen Usability-Test?",
@@ -1068,7 +1105,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Die Mietpreise sind zu hoch."]
+                correctTexts: ["C. Die Mietpreise sind zu hoch."],
+                explanation: "Antwort C hat nichts mit Usability zu tun."
             },
             {
                 question: "Welcher eine der folgenden Begriffe ist KEINE typische Bewertung eines Usability-Befunds?",
@@ -1082,7 +1120,8 @@
                 ],
                 correct: ["E"],
                 multiChoice: false,
-                correctTexts: ["E. Essenzielles Problem (muss unabhängig von den Kosten behoben werden)"]
+                correctTexts: ["E. Essenzielles Problem (muss unabhängig von den Kosten behoben werden)"],
+                explanation: "Antwort E ist falsch, weil der Begriff „Essenzielles Problem (muss unabhängig von den Kosten behoben werden)“ im Curriculum nicht aufgeführt ist. Außerdem überschreitet der Zusatz „muss unabhängig von den Kosten behoben werden“ den Verantwortungsbereich des User Experience Professionals."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt eine Usability-Inspektion am besten?",
@@ -1096,7 +1135,8 @@
                 ],
                 correct: ["C"],
                 multiChoice: false,
-                correctTexts: ["C. Eine Evaluierung eines interaktiven Systems, bei der Experten potenzielle Usability-Probleme identifizieren"]
+                correctTexts: ["C. Eine Evaluierung eines interaktiven Systems, bei der Experten potenzielle Usability-Probleme identifizieren"],
+                explanation: "Antwort C ist eine Kurzversion der Definition von Usability-Inspektion im Curriculum."
             },
             {
                 question: "Welche eine der folgenden Aussagen beschreibt am besten, wie Benutzerbefragungen für die Usability-Evaluierung verwendet werden?",
@@ -1110,7 +1150,8 @@
                 ],
                 correct: ["A"],
                 multiChoice: false,
-                correctTexts: ["A. Die Benutzer werden gebeten, durch Ausfüllen eines Fragebogens Fakten und Meinungen über ein interaktives System mitzuteilen."]
+                correctTexts: ["A. Die Benutzer werden gebeten, durch Ausfüllen eines Fragebogens Fakten und Meinungen über ein interaktives System mitzuteilen."],
+                explanation: "Antwort A ist eine geringfügig geänderte Version der Definition von Benutzerbefragung im Curriculum."
             }
         ];
 
@@ -1253,41 +1294,47 @@
             }
 
             const question = questions[actualQuestionIndexInShuffledArray];
-            questionTextElement.innerHTML = question.question;
+            let questionContent = question.question;
+
+            // Add image if available
+            if (question.imageSrc) {
+                questionContent = `<img src="${question.imageSrc}" alt="Illustration zur Frage" class="mx-auto my-4 rounded-lg shadow-md" style="max-width: 100%; height: auto;">` + questionContent;
+            }
+            questionTextElement.innerHTML = questionContent;
 
             answersContainer.innerHTML = '';
             question.answers.forEach((answer, index) => {
-                const answerButton = document.createElement('button');
-                answerButton.classList.add('answer-button');
-                answerButton.textContent = answer;
-                answerButton.dataset.index = String.fromCharCode(65 + index); // A, B, C...
+                const inputType = question.multiChoice ? 'checkbox' : 'radio';
+                const inputName = question.multiChoice ? `question-${originalQuestionIndex}-option` : `question-${originalQuestionIndex}`;
 
-                // Use userAnswers[originalQuestionIndex] for displaying selected answers
-                if (userAnswers[originalQuestionIndex].includes(answerButton.dataset.index)) {
-                    answerButton.classList.add('selected');
+                const answerHtml = `
+                    <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-blue-50 transition duration-200">
+                        <input type="${inputType}" name="${inputName}" value="${String.fromCharCode(65 + index)}" class="${inputType === 'radio' ? 'form-radio' : 'form-checkbox'} h-5 w-5 text-blue-600 focus:ring-blue-500">
+                        <span class="text-gray-800">${answer}</span>
+                    </label>
+                `;
+                answersContainer.insertAdjacentHTML('beforeend', answerHtml);
+            });
+
+            // Re-select previously chosen answers and apply styling
+            answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`).forEach(input => {
+                const label = input.closest('label');
+                if (userAnswers[originalQuestionIndex].includes(input.value)) {
+                    input.checked = true;
+                    label.classList.add('selected');
+                } else {
+                    input.checked = false;
+                    label.classList.remove('selected');
                 }
+            });
 
-                // If in practice mode, enable click for immediate feedback
-                if (currentMode === 'practice') {
-                     // Check if an answer has already been selected for this question in practice mode
-                    const isAnsweredInPractice = userAnswers[originalQuestionIndex].length > 0;
-                    if (isAnsweredInPractice) {
-                        answerButton.disabled = true; // Disable if already answered
-                        // Show correct/incorrect styling immediately
-                        if (question.correct.includes(answerButton.dataset.index)) {
-                            answerButton.classList.add('correct');
-                        } else if (userAnswers[originalQuestionIndex].includes(answerButton.dataset.index)) {
-                            // Only mark as incorrect if it was selected by the user AND is actually wrong
-                            answerButton.classList.add('incorrect');
-                        }
-                    } else {
-                         answerButton.addEventListener('click', () => selectAnswer(answerButton.dataset.index, originalQuestionIndex));
-                    }
-                } else { // Test mode or general behavior
-                    answerButton.addEventListener('click', () => selectAnswer(answerButton.dataset.index, originalQuestionIndex));
-                }
-
-                answersContainer.appendChild(answerButton);
+            // Add event listeners to the *newly created* input elements
+            answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`).forEach(input => {
+                input.addEventListener('change', (event) => {
+                    const selectedValue = event.target.value;
+                    const originalQuestionIndexForEvent = originalQuestions.findIndex(q => q === questions[actualQuestionIndexInShuffledArray]); // Ensure correct index
+                    selectAnswer(selectedValue, originalQuestionIndexForEvent);
+                });
             });
 
             updateNavigationButtons();
@@ -1299,28 +1346,49 @@
              // In practice mode, if already answered, show immediate feedback and explanation button
             if (currentMode === 'practice') {
                 const answeredCount = userAnswers[originalQuestionIndex].length;
-                if (answeredCount > 0) {
-                    const isCorrect = checkAnswerCorrectness(originalQuestionIndex);
-                    if (isCorrect) {
+                const question = originalQuestions[originalQuestionIndex]; // Get original question data
+
+                // For single choice, feedback appears immediately if answered
+                // For multi-choice, feedback appears when the number of selected answers matches the number of correct answers
+                const shouldShowFeedback = (!question.multiChoice && answeredCount > 0) ||
+                                           (question.multiChoice && answeredCount === question.correct.length);
+
+                if (shouldShowFeedback) {
+                    // Disable all answer inputs
+                    answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`).forEach(input => {
+                        input.disabled = true;
+                    });
+
+                    // Show correct/incorrect styling and feedback
+                    const isCorrectOverall = checkAnswerCorrectness(originalQuestionIndex);
+                    if (isCorrectOverall) {
                         showFeedback('Richtig!', 'correct');
                     } else {
                         showFeedback('Falsch!', 'incorrect');
                     }
                     explanationInlineButton.classList.remove('hidden');
-                     // Disable all answer buttons after a selection in practice mode
-                    answersContainer.querySelectorAll('.answer-button').forEach(button => button.disabled = true);
 
-                    // Apply correct/incorrect styling to all buttons
-                    answersContainer.querySelectorAll('.answer-button').forEach(button => {
-                        if (questions[actualQuestionIndexInShuffledArray].correct.includes(button.dataset.index)) {
-                            button.classList.add('correct');
-                        } else if (userAnswers[originalQuestionIndex].includes(button.dataset.index) && !questions[actualQuestionIndexInShuffledArray].correct.includes(button.dataset.index)) {
-                            button.classList.add('incorrect');
+                    // Apply correct/incorrect styling to all buttons based on correct answers and user's selection
+                    answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`).forEach(input => {
+                        const label = input.closest('label');
+                        if (question.correct.includes(input.value)) {
+                            label.classList.add('correct');
+                        } else {
+                            label.classList.remove('correct');
+                        }
+
+                        if (userAnswers[originalQuestionIndex].includes(input.value) && !question.correct.includes(input.value)) {
+                            label.classList.add('incorrect');
+                        } else {
+                            label.classList.remove('incorrect');
                         }
                     });
                 } else {
-                    // Re-enable answer buttons if question not yet answered in practice mode
-                    answersContainer.querySelectorAll('.answer-button').forEach(button => button.disabled = false);
+                    // Re-enable answer inputs if not yet ready to show feedback
+                    answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`).forEach(input => {
+                        input.disabled = false;
+                        input.closest('label').classList.remove('selected', 'correct', 'incorrect'); // Clear previous styling
+                    });
                 }
             }
         }
@@ -1332,47 +1400,81 @@
          */
         function selectAnswer(selectedAnswerIndex, originalQuestionIndex) {
             const question = originalQuestions[originalQuestionIndex]; // Use originalQuestions for core data
-            const currentSelected = userAnswers[originalQuestionIndex];
+            let currentSelected = userAnswers[originalQuestionIndex];
 
             if (question.multiChoice) {
+                // For multi-choice, limit the number of selections
                 if (currentSelected.includes(selectedAnswerIndex)) {
+                    // If already selected, unselect it
                     userAnswers[originalQuestionIndex] = currentSelected.filter(item => item !== selectedAnswerIndex);
                 } else {
-                    userAnswers[originalQuestionIndex].push(selectedAnswerIndex);
+                    // If not selected, and we haven't reached the max allowed, select it
+                    if (currentSelected.length < question.correct.length) { // Limit selection to the number of correct answers
+                        userAnswers[originalQuestionIndex].push(selectedAnswerIndex);
+                    } else {
+                        // Optionally, alert the user they can't select more
+                        // Using a more user-friendly message instead of alert()
+                        showFeedback(`Sie können maximal ${question.correct.length} Antworten für diese Frage auswählen.`, 'incorrect');
+                        // Prevent the checkbox from being checked if max reached
+                        const inputElement = answersContainer.querySelector(`input[value="${selectedAnswerIndex}"][name^="question-${originalQuestionIndex}"]`);
+                        if (inputElement) {
+                            inputElement.checked = false;
+                        }
+                        return; // Exit without updating UI or checking feedback
+                    }
                 }
-            } else {
+            } else { // Single choice (radio button behavior)
                 userAnswers[originalQuestionIndex] = [selectedAnswerIndex];
             }
 
-            // UI-Aktualisierung (applies to the currently displayed question, which might be a shuffled one)
-            const answerButtons = answersContainer.querySelectorAll('.answer-button');
-            answerButtons.forEach(button => {
-                if (userAnswers[originalQuestionIndex].includes(button.dataset.index)) {
-                    button.classList.add('selected');
+            // UI-Aktualisierung
+            const answerInputs = answersContainer.querySelectorAll(`input[name^="question-${originalQuestionIndex}"]`);
+            answerInputs.forEach(input => {
+                const label = input.closest('label');
+                if (userAnswers[originalQuestionIndex].includes(input.value)) {
+                    input.checked = true;
+                    label.classList.add('selected');
                 } else {
-                    button.classList.remove('selected');
+                    input.checked = false; // Ensure unselected are unchecked for radios
+                    label.classList.remove('selected');
                 }
             });
 
             // Immediate feedback in practice mode
             if (currentMode === 'practice') {
-                const isCorrect = checkAnswerCorrectness(originalQuestionIndex);
-                if (isCorrect) {
-                    showFeedback('Richtig!', 'correct');
-                } else {
-                    showFeedback('Falsch!', 'incorrect');
-                }
-                explanationInlineButton.classList.remove('hidden');
+                const answeredCount = userAnswers[originalQuestionIndex].length;
+                const shouldShowFeedback = (!question.multiChoice && answeredCount > 0) ||
+                                           (question.multiChoice && answeredCount === question.correct.length);
 
-                // Apply correct/incorrect styling and disable buttons after an answer in practice mode
-                answerButtons.forEach(button => {
-                    if (question.correct.includes(button.dataset.index)) {
-                        button.classList.add('correct');
-                    } else if (userAnswers[originalQuestionIndex].includes(button.dataset.index) && !question.correct.includes(button.dataset.index)) {
-                        button.classList.add('incorrect');
+                if (shouldShowFeedback) {
+                    const isCorrect = checkAnswerCorrectness(originalQuestionIndex);
+                    if (isCorrect) {
+                        showFeedback('Richtig!', 'correct');
+                    } else {
+                        showFeedback('Falsch!', 'incorrect');
                     }
-                    button.disabled = true; // Disable after selection
-                });
+                    explanationInlineButton.classList.remove('hidden');
+
+                    // Apply correct/incorrect styling and disable inputs
+                    answerInputs.forEach(input => {
+                        const label = input.closest('label');
+                        if (question.correct.includes(input.value)) {
+                            label.classList.add('correct');
+                        } else {
+                            label.classList.remove('correct');
+                        }
+
+                        if (userAnswers[originalQuestionIndex].includes(input.value) && !question.correct.includes(input.value)) {
+                            label.classList.add('incorrect');
+                        } else {
+                            label.classList.remove('incorrect');
+                        }
+                        input.disabled = true; // Disable after selection
+                    });
+                } else {
+                    hideFeedback();
+                    explanationInlineButton.classList.add('hidden');
+                }
             }
         }
 
@@ -1501,7 +1603,7 @@
             prevMarkedButton.disabled = true;
             nextMarkedButton.disabled = true;
             exitReviewButton.disabled = true;
-            answersContainer.querySelectorAll('.answer-button').forEach(button => button.disabled = true);
+            answersContainer.querySelectorAll('input').forEach(input => input.disabled = true);
         }
 
         /**
@@ -1509,7 +1611,8 @@
          */
         function showExplanationModal() {
             explanationModal.classList.add('show');
-            explanationContent.innerHTML = '<div class="loading-spinner"></div><p>Erklärung wird geladen...</p>';
+            // Der Lade-Spinner ist hier nicht mehr nötig, da die Erklärung sofort verfügbar ist.
+            explanationContent.innerHTML = ''; // Inhalt leeren, bevor die neue Erklärung geladen wird
         }
 
         /**
@@ -1587,56 +1690,15 @@
         }
 
         /**
-         * Generiert eine Erklärung mithilfe der Gemini API.
+         * Zeigt die Erklärung für eine Frage an.
          * @param {object} questionData - Die Daten der Frage.
-         * @param {Array<string>} userAnswerForQuestion - Die vom Benutzer ausgewählten Antworten.
-         * @param {boolean} isCorrect - Ob die Benutzerantwort richtig war.
          */
-        async function generateExplanation(questionData, userAnswerForQuestion, isCorrect) {
+        function displayLocalExplanation(questionData) {
             showExplanationModal();
-
-            const prompt = `
-            Basierend auf der folgenden Quizfrage und den gegebenen Antworten,
-            erkläre ausführlich, warum die korrekte Antwort/die korrekten Antworten richtig ist/sind.
-            Erkläre auch, warum die anderen Antwortmöglichkeiten falsch sind.
-
-            Frage: "${questionData.question}"
-            Antwortmöglichkeiten:
-            ${questionData.answers.map(a => `- ${a}`).join('\n')}
-
-            Korrekte Antwort(en): ${questionData.correctTexts.join('; ')}
-            Ihre Antwort(en): ${userAnswerForQuestion.length > 0 ? userAnswerForQuestion.map(index => questionData.answers[index.charCodeAt(0) - 65]).join('; ') : 'Keine Antwort'}
-            Ihre Antwort war ${isCorrect ? 'richtig' : 'falsch'}.
-
-            Bitte gib eine umfassende Erklärung auf Deutsch.
-            `;
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // Canvas will automatically provide it in runtime
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    explanationContent.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Display the response text
-                } else {
-                    explanationContent.innerHTML = '<p class="text-red-500">Es tut uns leid, die Erklärung konnte nicht generiert werden. Bitte versuchen Sie es später erneut.</p>';
-                }
-            } catch (error) {
-                console.error('Fehler beim Abrufen der Erklärung:', error);
-                explanationContent.innerHTML = '<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut.</p>';
+            if (questionData.explanation) {
+                explanationContent.innerHTML = `<p>${questionData.explanation.replace(/\n/g, '<br>')}</p>`;
+            } else {
+                explanationContent.innerHTML = '<p class="text-gray-600">Für diese Frage ist keine Erklärung verfügbar.</p>';
             }
         }
 
@@ -1669,6 +1731,7 @@
                     if (question.correct.includes(ans)) {
                         tempScore += pointsPerOption;
                     } else {
+                        // Abzug nur, wenn die falsche Antwort ausgewählt wurde und nicht nur eine nicht ausgewählte richtige Antwort
                         tempScore -= pointsPerOption;
                     }
                 });
@@ -1680,6 +1743,7 @@
                     if (question.correct.includes(ans)) {
                         tempScore += pointsPerOption;
                     } else {
+                        // Abzug nur, wenn die falsche Antwort ausgewählt wurde und nicht nur eine nicht ausgewählte richtige Antwort
                         tempScore -= pointsPerOption;
                     }
                 });
@@ -1761,9 +1825,7 @@
                 button.addEventListener('click', (event) => {
                     const questionIndex = parseInt(event.target.dataset.questionIndex);
                     const questionData = originalQuestions[questionIndex];
-                    const userAnswer = userAnswers[questionIndex];
-                    const isCompletelyCorrect = checkAnswerCorrectness(questionIndex);
-                    generateExplanation(questionData, userAnswer, isCompletelyCorrect);
+                    displayLocalExplanation(questionData); // Use the local explanation function
                 });
             });
         }
@@ -1856,9 +1918,7 @@
             const actualQuestionInShuffled = questions[currentQuestionIndex];
             const originalIndex = originalQuestions.findIndex(q => q === actualQuestionInShuffled);
             const questionData = originalQuestions[originalIndex];
-            const userAnswer = userAnswers[originalIndex];
-            const isCorrect = checkAnswerCorrectness(originalIndex); // Check correctness for practice mode explanation
-            generateExplanation(questionData, userAnswer, isCorrect);
+            displayLocalExplanation(questionData); // Use the local explanation function
         });
 
         // Event listener for the new "Switch Mode" button
